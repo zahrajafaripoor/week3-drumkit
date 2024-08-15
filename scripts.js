@@ -1,25 +1,38 @@
-// Select all the drum buttons
-const keys = document.querySelectorAll('.key');
 
-
-keys.forEach(key => {
-    key.addEventListener('click', () => {
-        const sound = key.getAttribute('data-sound');
-        playSound(sound);
-    });
-});
-
-// Function to play the corresponding sound
-function playSound(sound) {
-    const audio = new Audio(`sounds/${sound}.mp3`);
+const playSound = (sound) => {
+    const audio = new Audio(`./sounds/${sound}.mp3`);
     audio.play();
-}
+};
 
-// Optional: Add keyboard event listeners for key presses
-document.addEventListener('keydown', (e) => {
-    const key = 
-    document.querySelector(`.key[data-sound="${e.key.toLowerCase()}"]`);
-    if (key) {
-        playSound(key.getAttribute('data-sound'));
+
+const handleClick = (event) => {
+    const sound = event.target.getAttribute('data-sound');
+    playSound(sound);
+};
+
+
+const handleKeyPress = (event) => {
+    const keyMap = {
+        'a': 'snare',
+        's': 'kick',
+        'd': 'hihat',
+        'f': 'tom',
+        'g': 'ride',
+        'h': 'clap',
+        'j': 'openhat',
+        'k': 'tink'
+    };
+    const sound = keyMap[event.key.toLowerCase()];
+    if (sound) {
+        playSound(sound);
+        document.querySelector(`.key[data-sound="${sound}"]`).click();
     }
+};
+
+
+document.querySelectorAll('.key').forEach(key => {
+    key.addEventListener('click', handleClick);
 });
+
+
+document.addEventListener('keydown', handleKeyPress);
