@@ -30,4 +30,5 @@ document.querySelectorAll('.key').forEach(key => {
     key.addEventListener('click', handleClick);
 });
 
+
 document.addEventListener('keydown', handleKeyPress);
