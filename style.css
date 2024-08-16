@@ -1,8 +1,11 @@
 body {
+    /* Remove default margin and padding */
     margin: 0;
     padding: 0;
+     /* Set the body to cover the full viewport height and width */
     height: 100vh;
     width: 100vw;
+    /* Use flexbox to center the content */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +14,7 @@ body {
 }
 
 .drum-kit-container {
+    /* Use flexbox to arrange the drum keys */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -21,10 +25,11 @@ body {
     position: relative;
     z-index: 1;
 }
-
+/* Styling for each drum key/button */
 .key {
     width: 150px;
     height: 150px;
+      /* Use flexbox to center text inside the key */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,18 +38,25 @@ body {
     color: #fff;
     background-color: rgba(255, 255, 255, 0.2);
     border: 2px solid #000;
+     /* Round the key shape */
     border-radius: 50%;
-    cursor: pointer;
+      /* Pointer cursor on hover */
+    cursor: pointer;/* When we hover over a button, the cursor will change to a hand icon */
     transition: transform 0.1s, background-color 0.2s;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-.key:active {
-    transform: scale(1.2);
+
+/* Styling for the drum key when it is pressed */
+.key:active {  
+    transform: scale(2.4);/* Slightly scale up the key */
+     /* Change background color when active */
     background-color: rgba(255, 255, 255, 0.4);
+    /* Adjust shadow to show pressed effect */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
-
+/* Styling for the letter inside each drum key */
 .key-letter {
+    /* Larger font size  */
     font-size: 2rem;
     font-weight: bold;
 }
@@ -56,6 +68,7 @@ body {
 }
 
 .drum-kit-image {
+     /* Fixed position to keep image in place */
     position: fixed;
     top: 0;
     left: 0;
